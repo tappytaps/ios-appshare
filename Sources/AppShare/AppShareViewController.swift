@@ -21,11 +21,14 @@ class AppShareViewController: UIViewController {
     // MARK: Dependencies
     
     private let request: AppShareRequest
+    private let configuration: AppShareConfiguration
     
     // MARK: Initialization
     
-    init(request: AppShareRequest) {
+    init(request: AppShareRequest, configuration: AppShareConfiguration) {
         self.request = request
+        self.configuration = configuration
+        
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -52,7 +55,7 @@ private extension AppShareViewController {
     // MARK: Setup
     
     func setupNavigationItem() {
-        navigationItem.title = "Share app"
+        navigationItem.title = configuration.titleText
         if #available(iOS 11.0, *) {
             navigationItem.largeTitleDisplayMode = .always
         }
@@ -129,7 +132,7 @@ extension AppShareViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let label = UILabel()
-        label.text = "Recommend the app to your friends"
+        label.text = configuration.descriptionText
         label.font = .systemFont(ofSize: 17)
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false

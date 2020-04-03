@@ -32,13 +32,13 @@ enum ShareService: CaseIterable {
     
     var name: String {
         switch self {
-        case .facebook:  return "Facebook"
-        case .twitter:   return "Twitter"
-        case .whatsApp:  return "WhatsApp"
-        case .messenger: return "Messenger"
-        case .email:     return "Email"
-        case .copyLink:  return "Copy link"
-        case .more:      return "More"
+        case .facebook:  return .localizedString("Facebook")
+        case .twitter:   return .localizedString("Twitter")
+        case .whatsApp:  return .localizedString("WhatsApp")
+        case .messenger: return .localizedString("messenger")
+        case .email:     return .localizedString("email")
+        case .copyLink:  return .localizedString("copyLink")
+        case .more:      return .localizedString("more")
         }
     }
     

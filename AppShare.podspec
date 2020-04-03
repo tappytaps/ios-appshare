@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
     s.ios.deployment_target = '10.0'
     s.source_files = 'Sources/**/*.{swift}'
     s.resource_bundles = {
-      'AppShareResources' => ['Sources/AppShare/Assets.xcassets']
+      'AppShareResources' => ['Sources/AppShare/Resources/*.{xcassets,lproj}']
     }
     s.dependency 'FBSDKShareKit/Swift'
   end

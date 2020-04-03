@@ -1,0 +1,10 @@
+"facebook" = "Facebook";
+"twitter" = "Twitter";
+"whatsapp" = "WhatsApp";
+"messenger" = "Messenger";
+"email" = "Email";
+"copyLink" = "Copy link";
+"more" = "More";
+
+"defaultTitle" = "Share app";
+"defaultDescription" = "Recommend the app to your friends";

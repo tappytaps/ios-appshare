@@ -71,14 +71,3 @@ class ShareServiceCell: UITableViewCell {
     }
     
 }
-
-extension UIImage {
-    
-    static func bundleImage(named imageName: String) -> UIImage? {
-        guard let resourcesBundleUrl = Bundle(for: ShareServiceCell.self).url(forResource: "AppShareResources", withExtension: "bundle"), let resourcesBundle = Bundle(url: resourcesBundleUrl) else {
-            return nil
-        }
-        return UIImage(named: imageName, in: resourcesBundle, compatibleWith: nil)
-    }
-    
-}
