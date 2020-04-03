@@ -84,8 +84,9 @@ enum ShareService: CaseIterable {
         case .copyLink:
             UIPasteboard.general.string = request.link
         case .more:
+            let shareRequestItem = AppShareRequestActivityItem(shareRequest: request)
             let activityController = UIActivityViewController(
-                activityItems: [request.text],
+                activityItems: [shareRequestItem],
                 applicationActivities: nil
             )
             viewController.present(activityController, animated: true)
