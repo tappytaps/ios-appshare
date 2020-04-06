@@ -5,13 +5,13 @@
 //  Created by Lukas Boura on 03/04/2020.
 //
 
-@import FBSDKShareKit;
-@import VK_ios_sdk;
-
 #import "ShareService.h"
 #import "NSBundle+Resources.h"
 #import "AppShareRequest.h"
 #import "QRCodeViewController.h"
+
+#import <FBSDKShareKit/FBSDKShareKit.h>
+#import <VK_ios_sdk/VKSdk.h>
 #import "WXApi.h"
 
 @implementation ShareService
@@ -22,13 +22,13 @@
         [ShareService serviceWithType:ShareServiceTypeMessenger],
         [ShareService serviceWithType:ShareServiceTypeWhatsApp],
         [ShareService serviceWithType:ShareServiceTypeTwitter],
-        [ShareService serviceWithType:ShareServiceTypeEmail],
-        [ShareService serviceWithType:ShareServiceTypeCopyLink],
-        [ShareService serviceWithType:ShareServiceTypeMore],
-        [ShareService serviceWithType:ShareServiceTypeQRCode],
+        [ShareService serviceWithType:ShareServiceTypeViber],
         [ShareService serviceWithType:ShareServiceTypeWeChat],
         [ShareService serviceWithType:ShareServiceTypeVKontakte],
-        [ShareService serviceWithType:ShareServiceTypeViber]
+        [ShareService serviceWithType:ShareServiceTypeEmail],
+        [ShareService serviceWithType:ShareServiceTypeCopyLink],
+        [ShareService serviceWithType:ShareServiceTypeQRCode],
+        [ShareService serviceWithType:ShareServiceTypeMore],
     ];
 }
 
@@ -58,11 +58,14 @@
             return @"message";
         case ShareServiceTypeCopyLink:
             return @"copy";
+        case ShareServiceTypeWeChat:
+            return @"weChat";
+        case ShareServiceTypeVKontakte:
+            return @"vKontakte";
+        case ShareServiceTypeViber:
+            return @"viber";
         case ShareServiceTypeMore:
         case ShareServiceTypeQRCode:
-        case ShareServiceTypeWeChat:
-        case ShareServiceTypeVKontakte:
-        case ShareServiceTypeViber:
             return @"more";
     }
 }
