@@ -26,6 +26,7 @@
         [ShareService serviceWithType:ShareServiceTypeWeChat],
         [ShareService serviceWithType:ShareServiceTypeVKontakte],
         [ShareService serviceWithType:ShareServiceTypeEmail],
+        [ShareService serviceWithType:ShareServiceTypeSMS],
         [ShareService serviceWithType:ShareServiceTypeCopyLink],
         [ShareService serviceWithType:ShareServiceTypeQRCode],
         [ShareService serviceWithType:ShareServiceTypeMore],
@@ -51,11 +52,13 @@
         case ShareServiceTypeTwitter:
             return @"twitter";
         case ShareServiceTypeWhatsApp:
-            return @"whatsapp";
+            return @"whatsApp";
         case ShareServiceTypeMessenger:
             return @"messenger";
         case ShareServiceTypeEmail:
-            return @"message";
+            return @"email";
+        case ShareServiceTypeSMS:
+            return @"sms";
         case ShareServiceTypeCopyLink:
             return @"copy";
         case ShareServiceTypeWeChat:
@@ -65,8 +68,9 @@
         case ShareServiceTypeViber:
             return @"viber";
         case ShareServiceTypeMore:
-        case ShareServiceTypeQRCode:
             return @"more";
+        case ShareServiceTypeQRCode:
+            return @"qrCode";
     }
 }
 
@@ -82,6 +86,8 @@
             return [NSString localizedStringWithKey:@"messenger"];
         case ShareServiceTypeEmail:
             return [NSString localizedStringWithKey:@"email"];
+        case ShareServiceTypeSMS:
+            return [NSString localizedStringWithKey:@"sms"];
         case ShareServiceTypeCopyLink:
             return [NSString localizedStringWithKey:@"copyLink"];
         case ShareServiceTypeMore:
@@ -109,6 +115,8 @@
             return @"fb-messenger";
         case ShareServiceTypeEmail:
             return @"mailto";
+        case ShareServiceTypeSMS:
+            return @"sms";
         case ShareServiceTypeVKontakte:
             return @"vk";
         case ShareServiceTypeViber:
@@ -133,32 +141,41 @@
                 FBSDKShareDialog *dialog = [FBSDKShareDialog dialogWithViewController:viewController withContent:content delegate:nil];
                 [dialog show];
             }
-        }
+            
+        } break;
         case ShareServiceTypeTwitter:
             [self openUrl:[NSString stringWithFormat:@"%@://post?message=%@", self.urlScheme, request.text]];
+            break;
         case ShareServiceTypeWhatsApp:
             [self openUrl:[NSString stringWithFormat:@"%@://send?text=%@", self.urlScheme, request.text]];
+            break;
         case ShareServiceTypeMessenger:
             [self openUrl:[NSString stringWithFormat:@"%@://share?link=%@", self.urlScheme, request.link]];
+            break;
         case ShareServiceTypeEmail:
             [self openUrl:[NSString stringWithFormat:@"%@:?subject=%@&body=%@", self.urlScheme, request.subject, request.text]];
+            break;
+        case ShareServiceTypeSMS:
+            [self openUrl:[NSString stringWithFormat:@"%@:&body=%@", self.urlScheme, request.text]];
+            break;
         case ShareServiceTypeViber:
             [self openUrl:[NSString stringWithFormat:@"%@://forward?text=%@", self.urlScheme, request.text]];
+            break;
         case ShareServiceTypeCopyLink:
             UIPasteboard.generalPasteboard.string = request.link;
-            return;
+            break;
         case ShareServiceTypeMore: {
             AppShareRequestActivityItem *shareRequestItem = [[AppShareRequestActivityItem alloc] initWithShareRequest:request];
             UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:@[shareRequestItem] applicationActivities:nil];
             
             [viewController presentViewController:activityController animated:YES completion:nil];
-        }
+        } break;
         case ShareServiceTypeQRCode: {
             UIImage *qrCodeImage = [request generateQRCode];
             QRCodeViewController *qrCoreController = [[QRCodeViewController alloc] initWithQRCodeImage:qrCodeImage];
             
             [viewController presentViewController:qrCoreController animated:YES completion:nil];
-        }
+        } break;
         case ShareServiceTypeWeChat: {
             WXWebpageObject *ext = [WXWebpageObject object];
             ext.webpageUrl = request.link;
@@ -176,7 +193,7 @@
             [WXApi sendReq:weChatRequest completion:^(BOOL success) {
                 NSLog(@"WeChat share result: %i", success);
             }];
-        }
+        } break;
         case ShareServiceTypeVKontakte: {
             if (![VKSdk initialized]) {
                 [VKSdk initializeWithAppId:@""];
@@ -188,7 +205,7 @@
                 [dialog dismissViewControllerAnimated:YES completion:nil];
             }];
             [viewController presentViewController:shareDialog animated:YES completion:nil];
-        }
+        } break;
     }
 }
 

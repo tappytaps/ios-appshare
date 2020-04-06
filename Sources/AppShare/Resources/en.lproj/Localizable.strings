@@ -1,6 +1,6 @@
 "facebook" = "Facebook";
 "twitter" = "Twitter";
-"whatsapp" = "WhatsApp";
+"whatsApp" = "WhatsApp";
 "messenger" = "Messenger";
 "email" = "Email";
 "copyLink" = "Copy link";
@@ -9,6 +9,7 @@
 "weChat" = "WeChat";
 "vKontakte" = "VKontakte";
 "viber" = "Viber";
+"sms" = "SMS";
 
 "defaultTitle" = "Share app";
 "defaultDescription" = "Recommend the app to your friends";
