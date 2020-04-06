@@ -5,6 +5,10 @@
 "email" = "Email";
 "copyLink" = "Copy link";
 "more" = "More";
+"qrCode" = "QR code";
+"weChat" = "WeChat";
+"vKontakte" = "VKontakte";
+"viber" = "Viber";
 
 "defaultTitle" = "Share app";
 "defaultDescription" = "Recommend the app to your friends";
