@@ -172,9 +172,13 @@
         } break;
         case ShareServiceTypeQRCode: {
             UIImage *qrCodeImage = [request generateQRCode];
-            QRCodeViewController *qrCoreController = [[QRCodeViewController alloc] initWithQRCodeImage:qrCodeImage];
+            QRCodeViewController *qrCodeController = [[QRCodeViewController alloc] initWithQRCodeImage:qrCodeImage];
+            UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:qrCodeController];
+            [navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+            navigationController.navigationBar.shadowImage = [UIImage new];
+            navigationController.navigationBar.prefersLargeTitles = NO;
             
-            [viewController presentViewController:qrCoreController animated:YES completion:nil];
+            [viewController presentViewController:navigationController animated:YES completion:nil];
         } break;
         case ShareServiceTypeWeChat: {
             WXWebpageObject *ext = [WXWebpageObject object];

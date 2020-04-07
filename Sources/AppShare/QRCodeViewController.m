@@ -6,9 +6,11 @@
 //
 
 #import "QRCodeViewController.h"
+#import "NSBundle+Resources.h"
 
 @interface QRCodeViewController ()
 
+@property UILabel *titleLabel;
 @property UIImageView *imageView;
 
 @end
@@ -18,8 +20,8 @@
 - (instancetype)initWithQRCodeImage:(UIImage *)image {
     self = [super initWithNibName:nil bundle:nil];
     if (self) {
+        self.titleLabel = [[UILabel alloc] init];
         self.imageView = [[UIImageView alloc] initWithImage:image];
-        self.imageView.translatesAutoresizingMaskIntoConstraints = NO;
     }
     return self;
 }
@@ -27,20 +29,51 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self setupNavigationItem];
+    [self setupViews];
+    [self setupLayout];
+}
+
+- (void)setupNavigationItem {
+    UIBarButtonItem *closeButton = [[UIBarButtonItem alloc] initWithImage:[UIImage bundleImageNamed:@"close"] style:UIBarButtonItemStylePlain target:self action:@selector(closeButtonAction)];
+    closeButton.tintColor = [UIColor systemGrayColor];
+    
+    self.navigationItem.leftBarButtonItem = closeButton;
+}
+
+- (void)setupViews {
     if (@available(iOS 13.0, *)) {
         self.view.backgroundColor = [UIColor systemBackgroundColor];
     } else {
         self.view.backgroundColor = [UIColor whiteColor];
     }
+    self.titleLabel.font = [UIFont systemFontOfSize:17];
+    self.titleLabel.text = [NSString localizedStringWithKey:@"qrCodeTitle"];
+    self.titleLabel.textAlignment = NSTextAlignmentCenter;
+    self.titleLabel.numberOfLines = 2;
+}
+
+- (void)setupLayout {
+    self.titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    self.imageView.translatesAutoresizingMaskIntoConstraints = NO;
     
+    [self.view addSubview:self.titleLabel];
     [self.view addSubview:self.imageView];
     
     [NSLayoutConstraint activateConstraints:@[
-        [self.imageView.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:32],
-        [self.imageView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant:-32],
         [self.imageView.centerYAnchor constraintEqualToAnchor:self.view.centerYAnchor],
-        [self.imageView.heightAnchor constraintEqualToAnchor:self.imageView.widthAnchor]
+        [self.imageView.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor],
+        [self.imageView.heightAnchor constraintEqualToConstant:169],
+        [self.imageView.widthAnchor constraintEqualToConstant:169],
+        
+        [self.titleLabel.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:32],
+        [self.titleLabel.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant:-32],
+        [self.titleLabel.bottomAnchor constraintEqualToAnchor:self.imageView.topAnchor constant:-48]
     ]];
+}
+
+- (void)closeButtonAction {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
