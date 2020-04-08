@@ -9,12 +9,13 @@
 
 @implementation AppShareRequest
 
-- (instancetype)initWithLink:(NSString *)link text:(NSString *)text subject:(NSString *)subject {
+- (instancetype)initWithLink:(NSString *)link subject:(NSString *)subject text:(NSString *)text personalText:(NSString *)personalText {
     self = [super init];
     if (self) {
         _link = link;
-        _text = text;
         _subject = subject;
+        _text = text;
+        _personalText = personalText;
     }
     return self;
 }

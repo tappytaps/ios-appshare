@@ -142,7 +142,7 @@
             if (url) {
                 FBSDKShareLinkContent *content = [[FBSDKShareLinkContent alloc] init];
                 content.contentURL = url;
-                content.quote = request.text;
+                content.quote = request.personalText;
                 
                 FBSDKShareDialog *dialog = [FBSDKShareDialog dialogWithViewController:viewController withContent:content delegate:nil];
                 [dialog show];
@@ -153,19 +153,19 @@
             [self openUrl:[NSString stringWithFormat:@"%@://post?message=%@", self.urlScheme, request.text]];
             break;
         case ShareServiceTypeWhatsApp:
-            [self openUrl:[NSString stringWithFormat:@"%@://send?text=%@", self.urlScheme, request.text]];
+            [self openUrl:[NSString stringWithFormat:@"%@://send?text=%@", self.urlScheme, request.personalText]];
             break;
         case ShareServiceTypeMessenger:
             [self openUrl:[NSString stringWithFormat:@"%@://share?link=%@", self.urlScheme, request.link]];
             break;
         case ShareServiceTypeEmail:
-            [self openUrl:[NSString stringWithFormat:@"%@:?subject=%@&body=%@", self.urlScheme, request.subject, request.text]];
+            [self openUrl:[NSString stringWithFormat:@"%@:?subject=%@&body=%@", self.urlScheme, request.subject, request.personalText]];
             break;
         case ShareServiceTypeSMS:
-            [self openUrl:[NSString stringWithFormat:@"%@:&body=%@", self.urlScheme, request.text]];
+            [self openUrl:[NSString stringWithFormat:@"%@:&body=%@", self.urlScheme, request.personalText]];
             break;
         case ShareServiceTypeViber:
-            [self openUrl:[NSString stringWithFormat:@"%@://forward?text=%@", self.urlScheme, request.text]];
+            [self openUrl:[NSString stringWithFormat:@"%@://forward?text=%@", self.urlScheme, request.personalText]];
             break;
         case ShareServiceTypeCopyLink:
             UIPasteboard.generalPasteboard.string = request.link;
@@ -193,12 +193,12 @@
             ext.webpageUrl = request.link;
             
             WXMediaMessage *msg = [[WXMediaMessage alloc] init];
-            msg.title = request.text;
+            msg.title = request.personalText;
             msg.mediaObject = ext;
             
             SendMessageToWXReq *weChatRequest = [[SendMessageToWXReq alloc] init];
             weChatRequest.message = msg;
-            weChatRequest.text = request.text;
+            weChatRequest.text = request.personalText;
             weChatRequest.bText = NO;
             weChatRequest.scene = WXSceneSession;
             

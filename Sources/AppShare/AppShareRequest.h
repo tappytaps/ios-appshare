@@ -14,12 +14,13 @@ NS_ASSUME_NONNULL_BEGIN
 @interface AppShareRequest : NSObject
 
 @property (readonly) NSString *link;
-@property (readonly) NSString *text;
 @property (readonly) NSString *subject;
+@property (readonly) NSString *text;
+@property (readonly) NSString *personalText;
 
 @property (readonly, nonatomic) NSURL *linkUrl;
 
-- (instancetype)initWithLink:(NSString *)link text:(NSString *)text subject:(NSString *)subject;
+- (instancetype)initWithLink:(NSString *)link subject:(NSString *)subject text:(NSString *)text personalText:(NSString *)personalText;
 
 - (UIImage *)generateQRCode;
 
