@@ -11,8 +11,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface AppShareConfiguration : NSObject
 
-@property NSString *titleText;
-@property NSString *descriptionText;
+@property (nullable) NSString *titleText;
+@property (nullable) NSString *descriptionText;
 
 + (instancetype)defaultConfiguration;
 

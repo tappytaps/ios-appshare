@@ -40,7 +40,7 @@
     if (@available(iOS 13.0, *)) {
         self.separatorView.backgroundColor = [UIColor systemGray5Color];
     } else {
-        self.separatorView.backgroundColor = [UIColor lightGrayColor];
+        self.separatorView.backgroundColor = [UIColor colorWithRed:188.0/255 green:187.0/255 blue:193.0/255 alpha:1];
     }
     
     UIStackView *contentStackView = [[UIStackView alloc] init];

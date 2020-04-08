@@ -11,7 +11,13 @@
 #import "QRCodeViewController.h"
 
 #import <FBSDKShareKit/FBSDKShareKit.h>
+
+#if __has_include(<VK_ios_sdk/VKSdk.h>)
 #import <VK_ios_sdk/VKSdk.h>
+#else
+#import <VK-ios-sdk/VKSdk.h>
+#endif
+
 #import "WXApi.h"
 
 @implementation ShareService
@@ -176,7 +182,9 @@
             UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:qrCodeController];
             [navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
             navigationController.navigationBar.shadowImage = [UIImage new];
-            navigationController.navigationBar.prefersLargeTitles = NO;
+            if (@available(iOS 11.0, *)) {
+                navigationController.navigationBar.prefersLargeTitles = NO;
+            }
             
             [viewController presentViewController:navigationController animated:YES completion:nil];
         } break;
