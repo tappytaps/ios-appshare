@@ -180,6 +180,7 @@
             UIImage *qrCodeImage = [request generateQRCode];
             QRCodeViewController *qrCodeController = [[QRCodeViewController alloc] initWithQRCodeImage:qrCodeImage];
             UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:qrCodeController];
+            navigationController.modalPresentationStyle = UIModalPresentationFormSheet;
             [navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
             navigationController.navigationBar.shadowImage = [UIImage new];
             if (@available(iOS 11.0, *)) {
