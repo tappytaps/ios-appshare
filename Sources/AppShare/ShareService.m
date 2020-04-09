@@ -29,7 +29,7 @@
         [ShareService serviceWithType:ShareServiceTypeWhatsApp],
         [ShareService serviceWithType:ShareServiceTypeTwitter],
         [ShareService serviceWithType:ShareServiceTypeViber],
-        [ShareService serviceWithType:ShareServiceTypeWeChat],
+        //[ShareService serviceWithType:ShareServiceTypeWeChat],
         [ShareService serviceWithType:ShareServiceTypeVKontakte],
         [ShareService serviceWithType:ShareServiceTypeEmail],
         [ShareService serviceWithType:ShareServiceTypeSMS],
