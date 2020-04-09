@@ -1,1 +1,16 @@
-"copyLink" = "Zkopírovat link";
+"facebook" = "Facebook";
+"twitter" = "Twitter";
+"whatsApp" = "WhatsApp";
+"messenger" = "Messenger";
+"email" = "E-mail";
+"copyLink" = "Kopírovat odkaz";
+"more" = "Další";
+"qrCode" = "QR kód";
+"weChat" = "WeChat";
+"vKontakte" = "VKontakte";
+"viber" = "Viber";
+"sms" = "SMS";
+
+"defaultTitle" = "Sdílet aplikaci";
+"defaultDescription" = "Doporučte aplikaci svým přátelům.";
+"qrCodeTitle" = "Naskenujte tento QR kód na Vaše zařízení.";
