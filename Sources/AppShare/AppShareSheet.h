@@ -21,8 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithRequest:(AppShareRequest *)request presentationContext:(UIViewController *)presentationContext;
 - (instancetype)initWithRequest:(AppShareRequest *)request presentationContext:(UIViewController *)presentationContext finishedCallback:(ShareFinishedCallback)callback;
-- (instancetype)initWithRequest:(AppShareRequest *)request configuratShareion:(AppShareConfiguration *)cofiguration presentationContext:(UIViewController *)presentationContext;
-- (instancetype)initWithRequest:(AppShareRequest *)request configuration:(AppShareConfiguration *)cofiguration presentationContext:(UIViewController *)presentationContext finishedCallback:(ShareFinishedCallback)callback;
+- (instancetype)initWithRequest:(AppShareRequest *)request configuration:(AppShareConfiguration *)configuration presentationContext:(UIViewController *)presentationContext;
+- (instancetype)initWithRequest:(AppShareRequest *)request configuration:(AppShareConfiguration *)configuration presentationContext:(UIViewController *)presentationContext finishedCallback:(ShareFinishedCallback)callback;
 - (void)show;
 
 @end

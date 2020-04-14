@@ -30,8 +30,9 @@
     return self;
 }
 
-- (instancetype)initWithRequest:(AppShareRequest *)request configuration:(AppShareConfiguration *)cofiguration presentationContext:(UIViewController *)presentationContext {
-    self = [self initWithRequest:request configuration:cofiguration presentationContext:presentationContext finishedCallback:nil];
+- (instancetype)initWithRequest:(AppShareRequest *)request configuration:(AppShareConfiguration *)configuration presentationContext:(UIViewController *)presentationContext {
+    self = [self initWithRequest:request configuration:configuration presentationContext:presentationContext finishedCallback:nil];
+    return self;
 }
 
 
@@ -40,11 +41,11 @@
     return self;
 }
 
-- (instancetype)initWithRequest:(AppShareRequest *)request configuration:(AppShareConfiguration *)cofiguration presentationContext:(UIViewController *)presentationContext finishedCallback:(ShareFinishedCallback)callback{
+- (instancetype)initWithRequest:(AppShareRequest *)request configuration:(AppShareConfiguration *)configuration presentationContext:(UIViewController *)presentationContext finishedCallback:(ShareFinishedCallback)callback{
     self = [super init];
     if (self) {
         self.request = request;
-        self.configuration = cofiguration;
+        self.configuration = configuration;
         self.presentationContext = presentationContext;
         shareFinishedCallback = callback;
     }
