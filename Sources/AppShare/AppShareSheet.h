@@ -11,13 +11,18 @@
 #import "AppShareRequest.h"
 #import "AppShareConfiguration.h"
 
+@class ShareService;
+
+typedef void (^ShareFinishedCallback)(ShareService * _Nullable);
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface AppShareSheet : NSObject
 
 - (instancetype)initWithRequest:(AppShareRequest *)request presentationContext:(UIViewController *)presentationContext;
-- (instancetype)initWithRequest:(AppShareRequest *)request configuration:(AppShareConfiguration *)cofiguration presentationContext:(UIViewController *)presentationContext;
-
+- (instancetype)initWithRequest:(AppShareRequest *)request presentationContext:(UIViewController *)presentationContext finishedCallback:(ShareFinishedCallback)callback;
+- (instancetype)initWithRequest:(AppShareRequest *)request configuratShareion:(AppShareConfiguration *)cofiguration presentationContext:(UIViewController *)presentationContext;
+- (instancetype)initWithRequest:(AppShareRequest *)request configuration:(AppShareConfiguration *)cofiguration presentationContext:(UIViewController *)presentationContext finishedCallback:(ShareFinishedCallback)callback;
 - (void)show;
 
 @end

@@ -16,17 +16,19 @@
 
 @property AppShareRequest *request;
 @property AppShareConfiguration *configuration;
+@property ShareFinishedCallback callback;
 
 @end
 
 @implementation AppShareViewController
 
-- (instancetype)initWithRequest:(AppShareRequest *)request configuration:(AppShareConfiguration *)configuration {
+- (instancetype)initWithRequest:(AppShareRequest *)request configuration:(AppShareConfiguration *)configuration callback:(ShareFinishedCallback)callback {
     self = [super initWithNibName:nil bundle:nil];
     if (self) {
+        self.callback = callback;
         self.request = request;
         self.configuration = configuration;
-        
+
         self.tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
         self.cells = [[NSMutableArray alloc] init];
     }
@@ -106,6 +108,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     [self.cells[indexPath.row].service shareRequest:self.request from:self];
+    // inform main gui which share was selected
+    if (self.callback != nil) {
+        self.callback(self.cells[indexPath.row].service);
+    }
+
+
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {

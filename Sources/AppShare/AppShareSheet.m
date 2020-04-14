@@ -7,8 +7,13 @@
 
 #import "AppShareSheet.h"
 #import "AppShareViewController.h"
+#import "ShareService.h"
 
-@interface AppShareSheet ()
+
+
+@interface AppShareSheet () {
+    ShareFinishedCallback shareFinishedCallback;
+}
 
 @property AppShareRequest *request;
 @property AppShareConfiguration *configuration;
@@ -16,25 +21,38 @@
 
 @end
 
+
+
 @implementation AppShareSheet
 
 - (instancetype)initWithRequest:(AppShareRequest *)request presentationContext:(UIViewController *)presentationContext {
-    self = [self initWithRequest:request configuration:[AppShareConfiguration defaultConfiguration] presentationContext:presentationContext];
+    self = [self initWithRequest:request presentationContext:presentationContext finishedCallback:nil];
     return self;
 }
 
 - (instancetype)initWithRequest:(AppShareRequest *)request configuration:(AppShareConfiguration *)cofiguration presentationContext:(UIViewController *)presentationContext {
+    self = [self initWithRequest:request configuration:cofiguration presentationContext:presentationContext finishedCallback:nil];
+}
+
+
+- (instancetype)initWithRequest:(AppShareRequest *)request presentationContext:(UIViewController *)presentationContext finishedCallback:(ShareFinishedCallback)callback {
+    self = [self initWithRequest:request configuration:[AppShareConfiguration defaultConfiguration] presentationContext:presentationContext finishedCallback: callback];
+    return self;
+}
+
+- (instancetype)initWithRequest:(AppShareRequest *)request configuration:(AppShareConfiguration *)cofiguration presentationContext:(UIViewController *)presentationContext finishedCallback:(ShareFinishedCallback)callback{
     self = [super init];
     if (self) {
         self.request = request;
         self.configuration = cofiguration;
         self.presentationContext = presentationContext;
+        shareFinishedCallback = callback;
     }
     return self;
 }
 
 - (void)show {
-    AppShareViewController *shareController = [[AppShareViewController alloc] initWithRequest:self.request configuration:self.configuration];
+    AppShareViewController *shareController = [[AppShareViewController alloc] initWithRequest:self.request configuration:self.configuration callback:shareFinishedCallback];
     shareController.extendedLayoutIncludesOpaqueBars = YES;
     
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:shareController];

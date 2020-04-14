@@ -9,12 +9,14 @@
 
 #import "AppShareRequest.h"
 #import "AppShareConfiguration.h"
+#import "AppShareSheet.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface AppShareViewController : UIViewController
 
-- (instancetype)initWithRequest:(AppShareRequest *)request configuration:(AppShareConfiguration *)configuration;
+- (instancetype)initWithRequest:(AppShareRequest *)request configuration:(AppShareConfiguration *)configuration callback:(ShareFinishedCallback)callback;
+
 
 @end
 
