@@ -9,14 +9,20 @@
 
 @implementation AppShareRequest
 
-- (instancetype)initWithLink:(NSString *)link subject:(NSString *)subject text:(NSString *)text personalText:(NSString *)personalText {
-    self = [super init];
+- (instancetype)initWithLink:(NSString *)link qrLink:(nullable NSString *)qrLink subject:(NSString *)subject text:(NSString *)text personalText:(NSString *)personalText {
+    self = [self init];
     if (self) {
         _link = link;
+        _qrLink = qrLink;
         _subject = subject;
         _text = text;
         _personalText = personalText;
     }
+    return self;
+}
+
+- (instancetype)initWithLink:(NSString *)link subject:(NSString *)subject text:(NSString *)text personalText:(NSString *)personalText {
+    self = [self initWithLink:link qrLink:nil subject:subject text:text personalText:personalText];
     return self;
 }
 
@@ -25,9 +31,10 @@
 }
 
 - (UIImage *)generateQRCode {
+    NSString *link = self.qrLink ? : self.link;
     CIFilter *filter = [CIFilter filterWithName:@"CIQRCodeGenerator"];
     if (filter) {
-        NSData *data = [self.link dataUsingEncoding:NSASCIIStringEncoding];
+        NSData *data = [link dataUsingEncoding:NSASCIIStringEncoding];
         [filter setValue:data forKey:@"inputMessage"];
         CGAffineTransform transform = CGAffineTransformMakeScale(12, 12);
         CIImage *output = [[filter outputImage] imageByApplyingTransform:transform];
