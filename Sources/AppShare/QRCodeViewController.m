@@ -63,8 +63,8 @@
     [NSLayoutConstraint activateConstraints:@[
         [self.imageView.centerYAnchor constraintEqualToAnchor:self.view.centerYAnchor],
         [self.imageView.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor],
-        [self.imageView.heightAnchor constraintEqualToConstant:169],
-        [self.imageView.widthAnchor constraintEqualToConstant:169],
+        [self.imageView.heightAnchor constraintEqualToConstant:240],
+        [self.imageView.widthAnchor constraintEqualToConstant:240],
         
         [self.titleLabel.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:32],
         [self.titleLabel.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant:-32],
