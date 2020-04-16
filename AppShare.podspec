@@ -15,6 +15,5 @@ Pod::Spec.new do |s|
     s.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => 'FBSDKCOCOAPODS=1' }
     s.dependency 'FBSDKShareKit'
     s.dependency 'WechatOpenSDK'
-    s.dependency 'VK-ios-sdk'
     s.static_framework = true
   end

@@ -12,12 +12,6 @@
 
 #import <FBSDKShareKit/FBSDKShareKit.h>
 
-#if __has_include(<VK_ios_sdk/VKSdk.h>)
-#import <VK_ios_sdk/VKSdk.h>
-#else
-#import <VK-ios-sdk/VKSdk.h>
-#endif
-
 #import "WXApi.h"
 
 @implementation ShareService
@@ -167,6 +161,9 @@
         case ShareServiceTypeViber:
             [self openUrl:[NSString stringWithFormat:@"%@://forward?text=%@", self.urlScheme, request.personalText]];
             break;
+        case ShareServiceTypeVKontakte:
+            [self openUrl:[NSString stringWithFormat:@"%@://vk.com/share.php?&url=%@", self.urlScheme, request.link]];
+            break;
         case ShareServiceTypeCopyLink:
             UIPasteboard.generalPasteboard.string = request.link;
             break;
@@ -206,18 +203,6 @@
             [WXApi sendReq:weChatRequest completion:^(BOOL success) {
                 NSLog(@"WeChat share result: %i", success);
             }];
-        } break;
-        case ShareServiceTypeVKontakte: {
-            if (![VKSdk initialized]) {
-                [VKSdk initializeWithAppId:@""];
-            }
-            VKShareDialogController *shareDialog = [VKShareDialogController new];
-            shareDialog.text = request.text;
-            
-            [shareDialog setCompletionHandler:^(VKShareDialogController *dialog, VKShareDialogControllerResult result) {
-                [dialog dismissViewControllerAnimated:YES completion:nil];
-            }];
-            [viewController presentViewController:shareDialog animated:YES completion:nil];
         } break;
     }
 }
