@@ -60,11 +60,16 @@
     [self.view addSubview:self.titleLabel];
     [self.view addSubview:self.imageView];
     
+    NSLayoutConstraint *imageViewWidthConstraint = [self.imageView.widthAnchor constraintEqualToConstant:320];
+    imageViewWidthConstraint.priority = 999;
+    
     [NSLayoutConstraint activateConstraints:@[
         [self.imageView.centerYAnchor constraintEqualToAnchor:self.view.centerYAnchor],
         [self.imageView.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor],
-        [self.imageView.heightAnchor constraintEqualToConstant:240],
-        [self.imageView.widthAnchor constraintEqualToConstant:240],
+        [self.imageView.leadingAnchor constraintGreaterThanOrEqualToAnchor:self.view.leadingAnchor constant:32],
+        [self.imageView.trailingAnchor constraintLessThanOrEqualToAnchor:self.view.trailingAnchor constant:-32],
+        [self.imageView.heightAnchor constraintEqualToAnchor:self.imageView.widthAnchor],
+        imageViewWidthConstraint,
         
         [self.titleLabel.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:32],
         [self.titleLabel.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant:-32],
