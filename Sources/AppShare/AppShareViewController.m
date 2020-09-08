@@ -107,7 +107,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self.cells[indexPath.row].service shareRequest:self.request from:self];
+    [self.cells[indexPath.row].service shareRequest:self.request from:self sourceView: self.cells[indexPath.row]];
     // inform main gui which share was selected
     if (self.callback != nil) {
         self.callback(self.cells[indexPath.row].service);

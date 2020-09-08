@@ -129,7 +129,7 @@
     }
 }
 
-- (void)shareRequest:(AppShareRequest *)request from:(nonnull UIViewController *)viewController {
+- (void)shareRequest:(AppShareRequest *)request from:(nonnull UIViewController *)viewController sourceView:(UIView *)sourceView {
     switch (self.serviceType) {
         case ShareServiceTypeFacebook: {
             NSURL *url = request.linkUrl;
@@ -170,6 +170,7 @@
         case ShareServiceTypeMore: {
             AppShareRequestActivityItem *shareRequestItem = [[AppShareRequestActivityItem alloc] initWithShareRequest:request];
             UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:@[shareRequestItem] applicationActivities:nil];
+            activityController.popoverPresentationController.sourceView = sourceView;
             
             [viewController presentViewController:activityController animated:YES completion:nil];
         } break;

@@ -38,7 +38,7 @@ typedef enum : NSUInteger {
 
 + (instancetype)serviceWithType:(ShareServiceType)serviceType;
 
-- (void)shareRequest:(AppShareRequest *)request from:(UIViewController *)viewController;
+- (void)shareRequest:(AppShareRequest *)request from:(UIViewController *)viewController sourceView:(UIView *)sourceView;
 - (BOOL)isAvailable;
 
 @end
