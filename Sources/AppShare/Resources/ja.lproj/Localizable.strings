@@ -1,0 +1,16 @@
+"facebook" = "フェイスブック";
+"twitter" = "Twitter";
+"whatsApp" = "WhatsApp";
+"messenger" = "Messenger";
+"email" = "Eメール";
+"copyLink" = "コピー";
+"more" = "その他";
+"qrCode" = "QRコード";
+"weChat" = "WeChat";
+"vKontakte" = "VKontakte";
+"viber" = "バイバー";
+"sms" = "SMS";
+
+"defaultTitle" = "アプリをシェア";
+"defaultDescription" = "友達にアプリをすすめよう。";
+"qrCodeTitle" = "このQRコードをスキャンしよう";

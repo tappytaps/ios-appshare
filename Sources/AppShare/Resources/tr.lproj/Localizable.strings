@@ -1,0 +1,16 @@
+"facebook" = "Facebook";
+"twitter" = "Twitter";
+"whatsApp" = "WhatsApp";
+"messenger" = "Messenger";
+"email" = "E-posta";
+"copyLink" = "Bağlantıyı kopyala";
+"more" = "Daha";
+"qrCode" = "QR kod";
+"weChat" = "WeChat";
+"vKontakte" = "VKontakte";
+"viber" = "Viber";
+"sms" = "SMS";
+
+"defaultTitle" = "Uygulamayı paylaş";
+"defaultDescription" = "Uygulamayı arkadaşlarına tavsiye et.";
+"qrCodeTitle" = "Bu QR kodunu tarat";

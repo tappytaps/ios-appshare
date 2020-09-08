@@ -1,0 +1,16 @@
+"facebook" = "Facebook";
+"twitter" = "Twitter";
+"whatsApp" = "WhatsApp";
+"messenger" = "Messenger";
+"email" = "Email";
+"copyLink" = "Copier le lien";
+"more" = "Plus";
+"qrCode" = "QR Code";
+"weChat" = "WeChat";
+"vKontakte" = "VKontakte";
+"viber" = "Viber";
+"sms" = "SMS";
+
+"defaultTitle" = "Partager l'app";
+"defaultDescription" = "Recommander l'application à vos amis.";
+"qrCodeTitle" = "Scanner ce code QR";

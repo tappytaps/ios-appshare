@@ -1,0 +1,16 @@
+"facebook" = "Facebook";
+"twitter" = "Twitter";
+"whatsApp" = "WhatsApp";
+"messenger" = "Messenger";
+"email" = "E-post";
+"copyLink" = "Kopiera länk";
+"more" = "Mer";
+"qrCode" = "QR-kod";
+"weChat" = "WeChat";
+"vKontakte" = "VKontakte";
+"viber" = "Viber";
+"sms" = "SMS";
+
+"defaultTitle" = "Dela app";
+"defaultDescription" = "Rekommendera appen till dina vänner";
+"qrCodeTitle" = "Skanna denna QR-kod";

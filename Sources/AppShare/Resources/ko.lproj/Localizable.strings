@@ -1,0 +1,16 @@
+"facebook" = "페이스북";
+"twitter" = "트위터";
+"whatsApp" = "왓츠앱";
+"messenger" = "페이스북 메신저";
+"email" = "이메일";
+"copyLink" = "링크 복사";
+"more" = "더 보기";
+"qrCode" = "QR 코드";
+"weChat" = "위챗";
+"vKontakte" = "브깐딱쩨";
+"viber" = "바이 버";
+"sms" = "메시지";
+
+"defaultTitle" = "앱 공유";
+"defaultDescription" = "입을 친구에게 추천해주세요.";
+"qrCodeTitle" = "이 QR 코드를 스캔 하세요";

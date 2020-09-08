@@ -1,0 +1,16 @@
+"facebook" = "Facebook";
+"twitter" = "Twitter";
+"whatsApp" = "WhatsApp";
+"messenger" = "Messenger";
+"email" = "Емейл";
+"copyLink" = "Копировать ссылку";
+"more" = "Еще";
+"qrCode" = "QR код";
+"weChat" = "WeChat";
+"vKontakte" = "ВКонтакте";
+"viber" = "Viber";
+"sms" = "SMS";
+
+"defaultTitle" = "Поделиться приложением";
+"defaultDescription" = "Расскажите о приложении друзьям.";
+"qrCodeTitle" = "Отсканируйте этот QR-код";

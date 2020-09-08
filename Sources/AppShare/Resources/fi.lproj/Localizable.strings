@@ -1,0 +1,16 @@
+"facebook" = "Facebook";
+"twitter" = "Twitter";
+"whatsApp" = "WhatsApp";
+"messenger" = "Messenger";
+"email" = "Sähköposti";
+"copyLink" = "Kopioi linkki";
+"more" = "Lisää";
+"qrCode" = "QR koodi";
+"weChat" = "WeChat";
+"vKontakte" = "VKontakte";
+"viber" = "Viber";
+"sms" = "Tekstiviesti";
+
+"defaultTitle" = "Jaa sovellus";
+"defaultDescription" = "Suosittele sovellusta ystävillesi.";
+"qrCodeTitle" = "Lue tämä QR-koodi";
