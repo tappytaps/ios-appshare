@@ -12,7 +12,7 @@
 
 #import <FBSDKShareKit/FBSDKShareKit.h>
 
-#import "WXApi.h"
+// #import "WXApi.h"
 
 @implementation ShareService
 
@@ -23,7 +23,6 @@
         [ShareService serviceWithType:ShareServiceTypeWhatsApp],
         [ShareService serviceWithType:ShareServiceTypeTwitter],
         [ShareService serviceWithType:ShareServiceTypeViber],
-        //[ShareService serviceWithType:ShareServiceTypeWeChat],
         [ShareService serviceWithType:ShareServiceTypeVKontakte],
         [ShareService serviceWithType:ShareServiceTypeEmail],
         [ShareService serviceWithType:ShareServiceTypeSMS],
@@ -61,8 +60,6 @@
             return @"sms";
         case ShareServiceTypeCopyLink:
             return @"copy";
-        case ShareServiceTypeWeChat:
-            return @"weChat";
         case ShareServiceTypeVKontakte:
             return @"vKontakte";
         case ShareServiceTypeViber:
@@ -94,8 +91,6 @@
             return [NSString localizedStringWithKey:@"more"];
         case ShareServiceTypeQRCode:
             return [NSString localizedStringWithKey:@"qrCode"];
-        case ShareServiceTypeWeChat:
-            return [NSString localizedStringWithKey:@"weChat"];
         case ShareServiceTypeVKontakte:
             return [NSString localizedStringWithKey:@"vKontakte"];
         case ShareServiceTypeViber:
@@ -124,7 +119,6 @@
         case ShareServiceTypeCopyLink:
         case ShareServiceTypeMore:
         case ShareServiceTypeQRCode:
-        case ShareServiceTypeWeChat:
             return @"";
     }
 }
@@ -187,33 +181,12 @@
             
             [viewController presentViewController:navigationController animated:YES completion:nil];
         } break;
-        case ShareServiceTypeWeChat: {
-            WXWebpageObject *ext = [WXWebpageObject object];
-            ext.webpageUrl = request.link;
-            
-            WXMediaMessage *msg = [[WXMediaMessage alloc] init];
-            msg.title = request.personalText;
-            msg.mediaObject = ext;
-            
-            SendMessageToWXReq *weChatRequest = [[SendMessageToWXReq alloc] init];
-            weChatRequest.message = msg;
-            weChatRequest.text = request.personalText;
-            weChatRequest.bText = NO;
-            weChatRequest.scene = WXSceneSession;
-            
-            [WXApi sendReq:weChatRequest completion:^(BOOL success) {
-                NSLog(@"WeChat share result: %i", success);
-            }];
-        } break;
     }
 }
 
 - (BOOL)isAvailable {
     if (self.serviceType == ShareServiceTypeCopyLink || self.serviceType == ShareServiceTypeMore || self.serviceType == ShareServiceTypeQRCode) {
         return YES;
-    }
-    if (self.serviceType == ShareServiceTypeWeChat) {
-        return [WXApi isWXAppInstalled] && [WXApi isWXAppSupportApi];
     }
     NSURL *testUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@://", self.urlScheme]];
     return [[UIApplication sharedApplication] canOpenURL:testUrl];

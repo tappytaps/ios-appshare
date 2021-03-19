@@ -21,7 +21,6 @@ typedef enum : NSUInteger {
     ShareServiceTypeCopyLink,
     ShareServiceTypeMore,
     ShareServiceTypeQRCode,
-    ShareServiceTypeWeChat,
     ShareServiceTypeVKontakte,
     ShareServiceTypeViber,
 } ShareServiceType;
