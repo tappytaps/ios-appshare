@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
       'AppShareResources' => ['Sources/AppShare/Resources/*.{xcassets,lproj}']
     }
     s.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => 'FBSDKCOCOAPODS=1' }
-    #s.dependency 'FBSDKShareKit'
+    s.dependency 'FBSDKShareKit'
     #s.dependency 'WechatOpenSDK'
     s.static_framework = true
   end
