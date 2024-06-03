@@ -7,7 +7,9 @@
 
 @import Foundation;
 @import UIKit;
+#if __has_include(<LinkPresentation/LinkPresentation.h>)
 @import LinkPresentation;
+#endif
 
 NS_ASSUME_NONNULL_BEGIN
 
