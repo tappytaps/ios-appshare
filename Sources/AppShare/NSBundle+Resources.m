@@ -11,12 +11,16 @@
 @implementation NSBundle (Resources)
 
 + (NSBundle *)resourcesBundle {
-    NSURL *resourcesBundleUrl = [[NSBundle bundleForClass:[AppShareRequest class]] URLForResource:@"AppShareResources" withExtension:@"bundle"];
-    if (resourcesBundleUrl) {
-        return [NSBundle bundleWithURL:resourcesBundleUrl];
-    } else {
-        return nil;
-    }
+    #if defined(SWIFTPM_MODULE_BUNDLE) 
+        return SWIFTPM_MODULE_BUNDLE;
+    #else
+        NSURL *resourcesBundleUrl = [[NSBundle bundleForClass:[AppShareRequest class]] URLForResource:@"AppShareResources" withExtension:@"bundle"];
+        if (resourcesBundleUrl) {
+            return [NSBundle bundleWithURL:resourcesBundleUrl];
+        } else {
+            return nil;
+        }
+    #endif
 }
 
 @end

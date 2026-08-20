@@ -10,8 +10,7 @@
 
 #import "AppShareRequest.h"
 #import "AppShareConfiguration.h"
-
-@class ShareService;
+#import "ShareService.h"
 
 typedef void (^ShareFinishedCallback)(ShareService * _Nullable);
 
