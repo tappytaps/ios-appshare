@@ -11,5 +11,6 @@
 #import "AppShareSheet.h"
 #import "AppShareRequest.h"
 #import "AppShareConfiguration.h"
+#import "AppShareViewController.h"
 
 #endif /* AppShare_h */
